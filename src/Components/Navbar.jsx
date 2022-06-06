@@ -23,7 +23,6 @@ const Left = styledComponents.div`
 const Language = styledComponents.a`
     font-size:15px;
     cursor:pointer;
-
 `;
 
 // //search container
@@ -67,7 +66,6 @@ const Navbar = () => {
             <Container>
                 <Wrapper>
                     <Left>
-                     
                         <Language>EN</Language>
                         <SearchContainer>
                             <Input />
