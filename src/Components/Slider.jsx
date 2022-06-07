@@ -14,7 +14,8 @@ const Container = styled.div`
 const Arrow = styled.div`
     width:50px;
     height:50px;
-    background-color:#fff7f7;
+    /* background-color:#fff7f7; */
+    background-color:#fffafa ;
     border-radius:50%;
     display:flex;
     align-items:center;
@@ -61,7 +62,7 @@ const Title = styled.h1`
     font-size: 70px;
 `
 const Desc = styled.p`
-    margin:50px 0px ;
+    margin:60px 0px ;
     font-size:20px;
     font-weight:500 ;
     letter-spacing: 3px ;
