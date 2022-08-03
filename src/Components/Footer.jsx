@@ -8,8 +8,11 @@ import {
     Twitter,
   } from "@material-ui/icons";
   import styled from "styled-components";  
+import { mobile } from "../Responsive";
+
   const Container = styled.div`
     display: flex;
+    ${mobile({flexDirection:"column"})}
   `;
   
   const Left = styled.div`
@@ -17,6 +20,7 @@ import {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    
   `;
   
   const Logo = styled.h1``;
@@ -44,6 +48,7 @@ import {
   const Center = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile({display:"none"})}
   `;
   
   const Title = styled.h3`
@@ -66,6 +71,7 @@ import {
   const Right = styled.div`
     flex: 1;
     padding: 20px;
+    ${mobile({backgroundColor:"#fff8f8"})}
   `;
   
   const ContactItem = styled.div`
