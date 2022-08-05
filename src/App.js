@@ -12,16 +12,17 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-  return (
-    <div>
-      {/* <Home /> */}
-      {/* <ProductList /> */}
-      {/* <Product /> */}
-      {/* <Register /> */}
-      {/* <Login/> */}
-      <Cart/>
-      
-    </div>
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/products/:category' element={<ProductList/>} />
+        <Route path='/product:id' element={<Product/>} />
+        <Route path='/cart' element={<Cart/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
