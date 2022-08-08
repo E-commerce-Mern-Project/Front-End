@@ -46,9 +46,8 @@ const ProductList = () => {
     const value = e.target.value;
     setFilters({
       ...filters,
-      [e.target.name]: value,
-    });
-    
+      [e.target.name]: value.toLowerCase,
+    })
   };
   return (
     <Container>
