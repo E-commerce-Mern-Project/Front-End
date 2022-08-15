@@ -23,7 +23,6 @@ const Products = ({ filters, sort, cat }) => {
           `http://localhost:5000/api/product/?category=${cat}`
           : "http://localhost:5000/api/product"
         );
-        console.log(res.data);
         setProducts(res.data);
       } catch (err) {}
     };
@@ -40,12 +39,15 @@ const Products = ({ filters, sort, cat }) => {
         )
       );
   }, [products, cat, filters]);
+  console.log(products);
 
   return (
     <Container>
-      {filteredProducts.map((item) => (
+      { cat ? filteredProducts.map((item) => (
         <Product item={item} key={item.id} />
-      ))}
+      )) : popularProducts.map((item) => (
+        <Product item={item} key={item.id} />
+      )) }
     </Container>
   );
 };
