@@ -1,5 +1,4 @@
 import { Add, Remove } from "@material-ui/icons";
-import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -8,8 +7,10 @@ import Announcement from "../Components/Announcement";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import NewsLetter from "../Components/Newsletter";
+import { addProduct } from "../redux/cartRedux";
 import { publicRequest } from "../requestMethod";
 import { mobile } from "../Responsive";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 
@@ -128,6 +129,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [colors, setColors] = useState("");
   const [size, setSize] = useState("");
+  const dispatch = useDispatch()
 
   useEffect(() => {
     try {
@@ -148,6 +150,7 @@ const Product = () => {
   }
 
   const handleClick = ()=>{
+    dispatch(addProduct({product , quantity , price:product.price * quantity}))
     
   }
 
