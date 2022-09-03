@@ -6,6 +6,9 @@ import Announcement from "../Components/Announcement";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { mobile } from "../Responsive";
+import StripeCheckOut from 'react-stripe-checkout'
+
+const KEY = process.env.REACT_APP_STRIPE
 
 const Container = styled.div``;
 
@@ -152,8 +155,8 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            {cart.product?.map((product)=>(
-                <Product>
+            {cart.products.map((product) => (
+              <Product>
                 <ProductDetail>
                   <Image src={product.img} />
                   <Details>
@@ -175,7 +178,9 @@ const Cart = () => {
                     <ProductAmount>{product.quantity}</ProductAmount>
                     <Remove />
                   </ProductAmountContainer>
-                  <ProductPrice>{product.price* product.quantity}</ProductPrice>
+                  <ProductPrice>
+                    {product.price * product.quantity}
+                  </ProductPrice>
                 </PriceDetail>
               </Product>
             ))}
@@ -185,7 +190,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -197,7 +202,7 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
           </Summary>

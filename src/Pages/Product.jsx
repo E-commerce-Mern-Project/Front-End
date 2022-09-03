@@ -127,9 +127,9 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  const [colors, setColors] = useState("");
+  const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     try {
@@ -141,18 +141,17 @@ const Product = () => {
     } catch (err) {}
   }, [id]);
 
-  const handleQuantity = (type) =>{
-    if(type === "dec" ){
-      quantity >1 && setQuantity(quantity - 1)
-    }else{
-      setQuantity(quantity + 1)
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
     }
-  }
+  };
 
-  const handleClick = ()=>{
-    dispatch(addProduct({product , quantity , price:product.price * quantity}))
-    
-  }
+  const handleClick = () => {
+    dispatch(addProduct({...product,quantity,color ,size }))
+  };
 
   return (
     <Container>
@@ -169,24 +168,28 @@ const Product = () => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-               {product.color?.map((cls)=>(
-                 <FilterColor color={cls} key={cls} onClick={()=> setColors(cls)} />
-               ))}
+              {product.color?.map((cls) => (
+                <FilterColor
+                  color={cls}
+                  key={cls}
+                  onClick={() => setColor(cls)}
+                />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e)=> setSize(e.target.value)} >
-                {product.size?.map((s)=>(
-                  <FilterSizeOption key={s} >{s}</FilterSizeOption>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove onClick={()=> handleQuantity("dec")} />
+              <Remove onClick={() => handleQuantity("dec")} />
               <Amount>{quantity}</Amount>
-              <Add onClick={()=> handleQuantity("inc")}/>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>

@@ -92,7 +92,7 @@ const Navbar = () => {
                 <Badge
                   badgeContent={quantity}
                   color="primary"
-                  overlap="rectangular"
+                  // overlap="rectangular"
                 >
                   <ShoppingCartOutlined />
                 </Badge>
